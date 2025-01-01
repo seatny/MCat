@@ -1,0 +1,215 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "Combat Initiation Hub",
+   Icon = 0,
+   LoadingTitle = "Combat Initiation Hub",
+   LoadingSubtitle = "by DexScripts",
+   Theme = "Ocean",
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false,
+
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil,
+      FileName = "Big Hub"
+   },
+
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
+   }
+
+})
+
+-- Enemies Tab
+local EnemiesTab = Window:CreateTab("Enemies", 4483362458)
+
+EnemiesTab:CreateButton({
+   Name = "Grab All",
+   Callback = function()
+       local lp = game.Players.LocalPlayer
+       local path = game.Workspace:WaitForChild("Enemies") -- Ensure the path exists
+       getgenv().Farm = true
+       local distance = 10 -- Adjustable distance
+
+       local function BringNPCs()
+           while getgenv().Farm do
+               local playerHRP = lp.Character:WaitForChild("HumanoidRootPart")
+               for _, npc in ipairs(path:GetChildren()) do
+                   local npcHRP = npc:FindFirstChild("HumanoidRootPart")
+                   local npcHumanoid = npc:FindFirstChild("Humanoid")
+                   if npcHRP and npcHumanoid and npcHumanoid.Health > 0 then
+                       npcHRP.CFrame = playerHRP.CFrame + playerHRP.CFrame.LookVector * distance
+                   end
+               end
+               task.wait(0.1) -- Adjust the wait time as needed
+           end
+       end
+
+       BringNPCs()
+   end
+})
+
+EnemiesTab:CreateButton({
+   Name = "Kill Jason Instantly",
+   Callback = function()
+       -- Locate the Enemies folder in the workspace
+       local enemiesFolder = workspace:FindFirstChild("Enemies")
+       if not enemiesFolder then
+           warn("Enemies folder not found in workspace!")
+           return
+       end
+
+       -- Locate Jason within the Enemies folder
+       local JasonEnemy = enemiesFolder:FindFirstChild("Jason")
+       if not JasonEnemy then
+           warn("Jason not found in Enemies folder!")
+           return
+       end
+
+       -- Locate Jason's Humanoid
+       local humanoid = JasonEnemy:FindFirstChild("Humanoid")
+       if humanoid then
+           humanoid.Health = 0
+           print("Jason has been killed successfully!")
+       else
+           warn("Humanoid not found for Jason!")
+       end
+   end
+})
+
+-- Player Tab
+local PlayerTab = Window:CreateTab("Player", 4483362458)
+
+PlayerTab:CreateButton({
+   Name = "Inf dashes",
+   Callback = function()
+      game.Players.LocalPlayer.Character:SetAttribute("DashRegenTime", 0.01)
+   end,
+})
+
+PlayerTab:CreateButton({
+   Name = "NO aggro (good for going away if you have a teammate)",
+   Callback = function()
+      game.Players.LocalPlayer.Character:SetAttribute("AggroMultiplier", 0)
+   end,
+})
+
+PlayerTab:CreateButton({
+   Name = "GODLY aggro (good for saving a teammate)",
+   Callback = function()
+      game.Players.LocalPlayer.Character:SetAttribute("AggroMultiplier", 9999999999999999)
+   end,
+})
+
+-- Misc Tab
+local MiscTab = Window:CreateTab("Misc", 4483362458)
+
+MiscTab:CreateButton({
+   Name = "Load Infinite Yield (IY)",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+   end,
+})
+
+MiscTab:CreateButton({
+   Name = "Load Dark Dex",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+   end,
+})
+
+-- Weapons Tab
+local WeaponsTab = Window:CreateTab("Weapons", 4483362458)
+
+WeaponsTab:CreateSection("Slingshot")
+
+WeaponsTab:CreateButton({
+   Name = "Slingshot Spam",
+   Callback = function()
+       local Slingshot = game.Players.LocalPlayer.Backpack:FindFirstChild("Slingshot")
+       if not Slingshot then
+           warn("Slingshot not found in Backpack!")
+           return
+       end
+
+       -- Update Slingshot attributes
+       Slingshot:SetAttribute("Firerate", 0.01)
+       Slingshot:SetAttribute("Capacity", math.huge)
+       Slingshot:SetAttribute("ChargeRate", 0)
+       Slingshot:SetAttribute("Spread", 1.35)
+
+       -- Debugging
+       print("Updated Firerate:", Slingshot:GetAttribute("Firerate"))
+       print("Updated Capacity:", Slingshot:GetAttribute("Capacity"))
+   end
+})
+
+WeaponsTab:CreateSection("Swords")
+
+WeaponsTab:CreateButton({
+   Name = "Swords no cooldown (works with all)",
+   Callback = function()
+       local player = game.Players.LocalPlayer
+       local backpack = player:FindFirstChild("Backpack")
+       
+       if not backpack then
+           warn("Backpack not found!")
+           return
+       end
+
+       -- Validate and update attributes for specific items
+       local function setAttributes(itemName, attributes)
+           local item = backpack:FindFirstChild(itemName)
+           if item then
+               for attr, value in pairs(attributes) do
+                   item:SetAttribute(attr, value)
+               end
+           else
+               warn(itemName .. " not found in Backpack!")
+           end
+       end
+
+       -- Define items and their attributes to update
+       local swordAttributes = {
+           Swingrate = 0.01,
+           LungeRate = 0.01,
+       }
+       setAttributes("Sword", swordAttributes)
+       setAttributes("Katana", swordAttributes)
+
+       local firebrandAttributes = {
+           Windup = 0.01,
+           Swingrate = 0.01,
+           LungeRate = 0.01,
+       }
+       setAttributes("Firebrand", firebrandAttributes)
+   end,
+})
+
+WeaponsTab:CreateSection("All paintball variants no cooldown")
+
+WeaponsTab:CreateButton({
+   Name = "Paintball gun no cooldown",
+   Callback = function()
+       local player = game.Players.LocalPlayer
+       local backpack = player:FindFirstChild("Backpack")
+       
+       if not backpack then
+           warn("Backpack not found!")
+           return
+       end
+
+       local paintballGun = backpack:FindFirstChild("PaintballGun")
+       if not paintballGun then
+           warn("PaintballGun not found in Backpack!")
+           return
+       end
+
+       -- Update PaintballGun attributes
+       paintballGun:SetAttribute("Firerate", 0.01)
+       print("PaintballGun Firerate updated to:", paintballGun:GetAttribute("Firerate"))
+   end,
+})
