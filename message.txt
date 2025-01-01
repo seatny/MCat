@@ -1,10 +1,10 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "Combat Initiation Hub",
+   Name = "seatny hub",
    Icon = 0,
-   LoadingTitle = "Combat Initiation Hub",
-   LoadingSubtitle = "by DexScripts",
+   LoadingTitle = "seatny hub",
+   LoadingSubtitle = "by seatny",
    Theme = "Ocean",
    DisableRayfieldPrompts = false,
    DisableBuildWarnings = false,
@@ -19,8 +19,18 @@ local Window = Rayfield:CreateWindow({
       Enabled = false,
       Invite = "noinvitelink",
       RememberJoins = true
-   }
+   },
 
+   KeySystem = false,
+   KeySettings = {
+      Title = "2-step Verification",
+      Subtitle = "Key Needed",
+      Note = "The key is function",
+      FileName = "Key",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = {"function"}
+   }
 })
 
 -- Enemies Tab
