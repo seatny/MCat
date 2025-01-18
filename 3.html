@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница продукта</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .product-image {
+            max-width: 80%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .buy-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+        .text-button {
+            background-color: #ddd;
+            color: #333;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+        }
+        .buy-button:hover {
+            background-color: #367c39;
+        }
+        .text-button:hover{
+            background-color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <img src="photo.png" alt="Описание товара" class="product-image">
+    <button class="buy-button" onclick="window.location.href='https://seatny.ru'">Купить</button>
+    <button class="text-button" onclick="window.location.href='https://seatny.ru/1'">Введите текст</button>
+</body>
+</html>
+
