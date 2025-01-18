@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Страница продукта</title>
+    <title>Магазин футболок </title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             background-color: #f4f4f4;
         }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 30px;
+        }
+
         .product-image {
             max-width: 80%;
             height: auto;
@@ -23,6 +31,59 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
+
+        .text-button {
+            background-color: #ddd;
+            color: #333;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        .shorokdva-button {
+            background-color: #ddd;
+            color: #333;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        .left-buy-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+        .left-buy-button:hover {
+            background-color: #367c39;
+        }
+
+        .buy-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+             margin-left: 30px;
+        }
+
         .buy-button {
             background-color: #4CAF50;
             color: white;
@@ -36,30 +97,43 @@
             cursor: pointer;
             border: none;
         }
-        .text-button {
-            background-color: #ddd;
-            color: #333;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            border: 1px solid #ccc;
-        }
+
+        
         .buy-button:hover {
             background-color: #367c39;
         }
-        .text-button:hover{
+
+        .text-button:hover {
             background-color: #bbb;
+        }
+
+         .right-image {
+            max-width: 80%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+        }
+          .stock-text {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #777;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <img src="photo.png" alt="Описание товара" class="product-image">
-    <button class="buy-button" onclick="window.location.href='https://seatny.ru'">Купить</button>
-    <button class="text-button" onclick="window.location.href='https://seatny.ru/1'">Введите текст</button>
+    <div class="content-container">
+     <button class="left-buy-button" onclick="window.location.href='https://seatny.ru'">Купить</button>
+      <img src="photo.png" alt="Описание товара" class="product-image">
+      <button class="text-button" onclick="window.location.href='https://seatny.ru/1'">Введите текст</button>
+    </div>
+
+    <div class="buy-section">
+       <button class="buy-button" onclick="window.location.href='https://seatny.ru'">Купить</button>
+         <img src="photo212.png" alt="Правая картинка" class="right-image">
+         <button class="shorokdva-button"onclick="window.location.href='https://seatny.ru/3'">Осталось 42 штуки!</button>
+    </div>
 </body>
 </html>
-
